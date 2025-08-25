@@ -17,7 +17,7 @@ const CryptoTable = () => {
       <div className="crypto-cards-container">
         {cryptoData.map(crypto => (
           <div key={crypto.id} className="crypto-card">
-            <img src={crypto.image} alt={crypto.name} width="50" />
+            <img src={crypto.image} alt={crypto.name} width="40" />
             <div className="crypto-info">
               <h4>{crypto.name}</h4>
               <p>{crypto.symbol.toUpperCase()}</p>
@@ -36,12 +36,13 @@ const CryptoTable = () => {
         h3 {
           margin-bottom: 2rem;
           font-weight: 700;
-          font-size: 24px;
+          font-size: 1.5rem; /* 24px */
         }
         .crypto-cards-container {
           display: grid;
-          grid-template-columns: repeat(5, 1fr);
-          gap: 1.5rem;
+          gap: 1rem;
+          /* Mobile-first: 1 column */
+          grid-template-columns: 1fr;
         }
         .crypto-card {
           display: flex;
@@ -75,11 +76,31 @@ const CryptoTable = () => {
         }
         .crypto-price p {
           font-weight: 700;
-          font-size: 1.1rem;
+          font-size: 1rem;
         }
-        @media (max-width: 768px) {
+        
+        /* Small screens and up: 2 columns */
+        @media (min-width: 640px) {
           .crypto-cards-container {
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+          }
+        }
+        
+        /* Medium screens and up: 3 columns */
+        @media (min-width: 768px) {
+          .crypto-cards-container {
+            grid-template-columns: repeat(3, 1fr);
+          }
+          .crypto-price p {
+            font-size: 1.1rem;
+          }
+        }
+
+        /* Large screens and up: 5 columns */
+        @media (min-width: 1024px) {
+          .crypto-cards-container {
+            grid-template-columns: repeat(5, 1fr);
           }
         }
       `}</style>

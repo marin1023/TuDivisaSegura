@@ -32,20 +32,20 @@ const ExchangeRates = () => {
           text-align: center;
         }
         h3 {
-          margin-bottom: 5rem;
+          margin-bottom: 2rem;
           font-weight: 700;
           padding: 1rem;
-          
+          font-size: 1.5rem; /* 24px */
         }
         .rates-container {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          grid-template-columns: 1fr;
           gap: 1.5rem;
           justify-content: center;
         }
         .rate-card {
           background: var(--card-background);
-          padding: 2rem;
+          padding: 1.5rem;
           border-radius: var(--border-radius);
           box-shadow: var(--shadow);
           text-align: center;
@@ -59,12 +59,28 @@ const ExchangeRates = () => {
           margin: 0 0 0.5rem 0;
           color: var(--secondary-color);
           font-weight: 400;
+          font-size: 1rem;
         }
         .rate-card p {
-          font-size: 2.5rem;
+          font-size: 2rem; /* Adjusted for mobile */
           font-weight: 700;
           margin: 0;
           color: var(--primary-color);
+        }
+
+        @media (min-width: 640px) {
+          .rates-container {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          h3 {
+            margin-bottom: 3rem;
+          }
+          .rate-card {
+            padding: 2rem;
+          }
+          .rate-card p {
+            font-size: 2.5rem;
+          }
         }
       `}</style>
     </div>

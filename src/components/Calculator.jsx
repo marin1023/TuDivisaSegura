@@ -183,9 +183,9 @@ const Calculator = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center font-sans">
-            <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-2xl shadow-xl">
-                <h2 className="text-3xl font-bold text-center text-gray-800">Conversor de Divisas</h2>
+        <div className="flex flex-col items-center justify-center font-sans p-4">
+            <div className="w-full max-w-lg p-6 md:p-8 space-y-6 bg-white rounded-2xl shadow-xl">
+                <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800">Conversor de Divisas</h2>
 
                 <div className="space-y-4">
                     <div>
@@ -197,12 +197,12 @@ const Calculator = () => {
                                 value={sendAmount}
                                 onChange={handleSendAmountChange}
                                 placeholder="0.00"
-                                className="flex-1 block w-full px-4 py-3 text-lg text-gray-900 bg-gray-50 border border-gray-300 rounded-l-md focus:ring-blue-500 focus:border-blue-500"
+                                className="flex-1 block w-full px-3 py-2 md:px-4 md:py-3 text-base md:text-lg text-gray-900 bg-gray-50 border border-gray-300 rounded-l-md focus:ring-blue-500 focus:border-blue-500"
                             />
                             <select
                                 value={sendCurrency}
                                 onChange={handleSendCurrencyChange}
-                                className="px-4 py-3 bg-gray-100 border-t border-b border-r border-gray-300 text-gray-900 rounded-r-md focus:ring-blue-500 focus:border-blue-500"
+                                className="px-3 py-2 md:px-4 md:py-3 bg-gray-100 border-t border-b border-r border-gray-300 text-gray-900 rounded-r-md focus:ring-blue-500 focus:border-blue-500 text-base md:text-lg"
                             >
                                 {Object.keys(exchangeRates).map(currency => (
                                     <option key={currency} value={currency}>{currency}</option>
@@ -220,12 +220,12 @@ const Calculator = () => {
                                 value={receiveAmount}
                                 onChange={handleReceiveAmountChange}
                                 placeholder="0.00"
-                                className="flex-1 block w-full px-4 py-3 text-lg text-gray-900 bg-gray-50 border border-gray-300 rounded-l-md focus:ring-blue-500 focus:border-blue-500"
+                                className="flex-1 block w-full px-3 py-2 md:px-4 md:py-3 text-base md:text-lg text-gray-900 bg-gray-50 border border-gray-300 rounded-l-md focus:ring-blue-500 focus:border-blue-500"
                             />
                             <select
                                 value={receiveCurrency}
                                 onChange={handleReceiveCurrencyChange}
-                                className="px-4 py-3 bg-gray-100 border-t border-b border-r border-gray-300 text-gray-900 rounded-r-md focus:ring-blue-500 focus:border-blue-500"
+                                className="px-3 py-2 md:px-4 md:py-3 bg-gray-100 border-t border-b border-r border-gray-300 text-gray-900 rounded-r-md focus:ring-blue-500 focus:border-blue-500 text-base md:text-lg"
                             >
                                 {Object.keys(exchangeRates).map(currency => (
                                     <option key={currency} value={currency}>{currency}</option>
