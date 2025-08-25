@@ -1,0 +1,119 @@
+---
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+		<script is:inline>
+      // Script para manejar el modo oscuro/claro. Se ejecuta en el head para evitar el parpadeo.
+      const getTheme = () => {
+        const theme = localStorage.getItem('theme');
+        if (theme) return theme;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      };
+      document.documentElement.setAttribute('data-theme', getTheme());
+    </script>
+		<style>
+			:root {
+				--primary-color: #007bff;
+				--secondary-color: #6c757d;
+        --background-color: rgba(248, 249, 250, 0.8);
+        --card-background: #ffffff;
+        --text-color: #212529;
+        --light-gray: #e9ecef;
+        --border-radius: 16px;
+        --shadow: 0 8px 24px rgba(0,0,0,0.1);
+			}
+
+      [data-theme="dark"] {
+        --primary-color: #009bff;
+				--secondary-color: #a9b1b8;
+        --background-color: #121212;
+        --card-background: #1e1e1e;
+        --text-color: #e0e0e0;
+        --light-gray: #333333;
+        --shadow: 0 8px 24px rgba(0,0,0,0.25);
+      }
+
+			html {
+				font-family: 'Inter', sans-serif;
+				background-color: var(--background-color);
+        color: var(--text-color);
+        transition: background-color 0.3s ease, color 0.3s ease;
+			}
+			body {
+				margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+			}
+			main {
+				width: 100%;
+				max-width: 960px;
+				padding: 4rem 1.5rem;
+        box-sizing: border-box;
+			}
+      .theme-toggle {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background: var(--card-background);
+        border: 1px solid var(--light-gray);
+        padding: 0.5rem;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 1000;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+      .theme-toggle:hover {
+        transform: scale(1.1);
+      }
+      /* Icon visibility styles */
+      .theme-toggle .sun { display: none; }
+      .theme-toggle .moon { display: block; }
+      [data-theme="dark"] .theme-toggle .sun { display: block; }
+      [data-theme="dark"] .theme-toggle .moon { display: none; }
+		</style>
+	</head>
+	<body>
+    <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle theme">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" class="moon"></path>
+        <circle cx="12" cy="12" r="5" class="sun"></circle>
+        <line x1="12" y1="1" x2="12" y2="3" class="sun"></line>
+        <line x1="12" y1="21" x2="12" y2="23" class="sun"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" class="sun"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" class="sun"></line>
+        <line x1="1" y1="12" x2="3" y2="12" class="sun"></line>
+        <line x1="21" y1="12" x2="23" y2="12" class="sun"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" class="sun"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" class="sun"></line>
+      </svg>
+    </button>
+		<slot />
+    <script>
+      const themeToggleBtn = document.getElementById('theme-toggle-btn');
+
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      });
+    </script>
+	</body>
+</html>
