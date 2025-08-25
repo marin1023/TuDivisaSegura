@@ -3,89 +3,93 @@ import Layout from '../layouts/Layout.astro';
 import ExchangeRates from '../components/ExchangeRates.jsx';
 import CryptoTable from '../components/CryptoTable.jsx';
 import Calculator from '../components/Calculator.jsx';
-import Banner from '../components/Banner'
+import Banner from '../components/Banner.jsx';
+import AnimatedSection from '../components/AnimatedSection.jsx';
 ---
 
 <Layout title="TuDivisaSegura - Confianza en cada envío">
   <main>
-    <header>
-      <h1>TuDivisaSegura</h1>
-      <p class="subtitle">Confianza en cada envío.</p>
-    </header>
+    <AnimatedSection client:load delay={0.1}>
+      <header>
+        <h1>TuDivisaSegura</h1>
+        <p class="subtitle">Confianza en cada envío.</p>
+      </header>
+    </AnimatedSection>
 
-   
+    <AnimatedSection client:load delay={0.2}>
+      <Banner />
+    </AnimatedSection>
 
-    <Banner />
-    <ExchangeRates client:load />
-    <CryptoTable client:load />
-    <Calculator client:load />
+    <AnimatedSection client:load delay={0.3}>
+      <ExchangeRates client:load />
+    </AnimatedSection>
 
-    
-     
+    <AnimatedSection client:load delay={0.4}>
+      <CryptoTable client:load />
+    </AnimatedSection>
 
-    <footer>
-      <h3>Síguenos en nuestras redes sociales</h3>
-      <div class="social-links">
-        <a href="#" target="_blank" aria-label="Facebook">
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" class="social-icon facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-        </a>
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=Tudivisasegura@gmail.com" target="_blank" aria-label="Email">
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" class="social-icon email"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        </a>
-        <a href="https://wa.me/51925846218?text=Hola,%20vengo%20de%20TuDivisaSegura%20y%20quisiera%20hacer%20una%20consulta." target="_blank" aria-label="WhatsApp">
-          <img src="/Icon Whatsap 1 SVG.svg" width="40" height="40" alt="WhatsApp" class="social-icon whatsapp" />
-        </a>
-      </div>
-    </footer>
+    <AnimatedSection client:load delay={0.5}>
+      <Calculator client:load />
+    </AnimatedSection>
+
+    <AnimatedSection client:load delay={0.6}>
+      <footer>
+        <h3>Síguenos en nuestras redes sociales</h3>
+        <div class="social-links">
+          <a href="#" target="_blank" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" class="social-icon facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=Tudivisasegura@gmail.com" target="_blank" aria-label="Email">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" class="social-icon email"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </a>
+          <a href="https://wa.me/51925846218?text=Hola,%20vengo%20de%20TuDivisaSegura%20y%20quisiera%20hacer%20una%20consulta." target="_blank" aria-label="WhatsApp">
+            <img src="/Icon Whatsap 1 SVG.svg" width="40" height="40" alt="WhatsApp" class="social-icon whatsapp" />
+          </a>
+        </div>
+      </footer>
+    </AnimatedSection>
   </main>
 </Layout>
 
 <style>
   header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
   }
   h1 {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 900;
     margin: 0;
-    ;
   }
   .subtitle {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--secondary-color);
   }
   section {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
   }
-
-
   .intro p {
     max-width: 720px;
     margin: 0 auto;
     line-height: 1.6;
   }
-
-  
-
   h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 1.5rem;
   }
-  
   h3 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
   footer {
     text-align: center;
-    margin-top: 5rem;
-    margin-bottom: 3rem; /* Added margin to the bottom */
-    padding-top: 3rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    padding-top: 2rem;
     border-top: 1px solid var(--light-gray);
   }
   .social-links a {
-    margin: 0 1rem;
+    margin: 0 0.5rem;
     color: var(--secondary-color);
     text-decoration: none;
     transition: color 0.3s ease, transform 0.3s ease;
@@ -97,4 +101,33 @@ import Banner from '../components/Banner'
   .social-icon.facebook { color: #1877F2; }
   .social-icon.email { color: #D44638; }
   .social-icon.whatsapp { color: #25D366; }
+
+  @media (min-width: 768px) {
+    header {
+      margin-bottom: 4rem;
+    }
+    h1 {
+      font-size: 3.5rem;
+    }
+    .subtitle {
+      font-size: 1.2rem;
+    }
+    section {
+      margin-bottom: 4rem;
+    }
+    h2 {
+      font-size: 2.5rem;
+    }
+    h3 {
+      font-size: 1.8rem;
+    }
+    footer {
+      margin-top: 5rem;
+      margin-bottom: 3rem;
+      padding-top: 3rem;
+    }
+    .social-links a {
+      margin: 0 1rem;
+    }
+  }
 </style>

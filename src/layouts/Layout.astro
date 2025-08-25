@@ -64,7 +64,7 @@ const { title } = Astro.props;
 			main {
 				width: 100%;
 				max-width: 960px;
-				padding: 4rem 1.5rem;
+				padding: 2rem 1.5rem;
         box-sizing: border-box;
 			}
       .theme-toggle {
@@ -87,6 +87,12 @@ const { title } = Astro.props;
       .theme-toggle .moon { display: block; }
       [data-theme="dark"] .theme-toggle .sun { display: block; }
       [data-theme="dark"] .theme-toggle .moon { display: none; }
+
+      @media (min-width: 768px) {
+        main {
+          padding: 4rem 1.5rem;
+        }
+      }
 		</style>
 	</head>
 	<body>
